@@ -1,0 +1,89 @@
+application-nav, application-nav-secondary, .application-nav {
+  display: inline-block;
+  .nav-section {
+    display: inline-block;
+  }
+  .ds-icon {
+    padding-right: 5px;
+    font-size: 90%;
+  }
+  .badge {
+    // TODO: move this to .badge.badge-running-count in main
+    border-radius: 3px;
+    background-color: var(--color-accent);
+    padding: 3px 6px;
+    margin-bottom: 3px;
+    @media (max-width: 1400px) {
+      font-size: 10px;
+      margin-top: -2px;
+      margin-bottom: 2px;
+    }
+  }
+  a {
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 15px 15px 25px;
+    font-size: 18px;
+    position: relative;
+    &.active, &:focus, &:hover {
+      text-decoration: none;
+      background-color: transparent;
+      color: var(--color-primary);
+      .badge {
+        background-color: var(--color-primary);
+      }
+      &:after {
+        content: ' ';
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 12px solid var(--color-alabaster);
+        position: absolute;
+        left: calc(~"50% - 12px");
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.compact(@font-size) {
+  font-size: @font-size;
+  padding: 15px 10px 13px 10px;
+}
+
+.compact-header {
+  application-nav a {
+    .compact(14px);
+  }
+  application-nav-secondary a {
+    .compact(12px);
+  }
+  application-nav, application-nav-secondary, .application-nav {
+    .badge {
+      font-size: 10px;
+      margin-top: -2px;
+      margin-bottom: 2px;
+    }
+  }
+}
+
+application-nav {
+  a {
+    font-size: 18px;
+    font-weight: 600;
+    @media (max-width: 1400px) {
+      .compact(14px)
+    }
+  }
+}
+
+application-nav-secondary {
+  a {
+    font-size: 14px;
+    padding: 18px 10px 27px;
+    @media (max-width: 1400px) {
+      .compact(12px)
+    }
+  }
+}

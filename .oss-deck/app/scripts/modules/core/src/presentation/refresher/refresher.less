@@ -1,0 +1,20 @@
+@import (reference) "~core/presentation/less/imports/commonImports.less";
+
+.refresher {
+  margin-top: 4px;
+  .fa-refresh {
+    font-size: 75%;
+    &.refresh-disabled {
+      opacity: 0.5;
+    }
+    &.refresh-young {
+      color: var(--color-success);
+    }
+    &.refresh-old {
+      color: var(--color-alert);
+    }
+    &.refresh-ancient {
+      color: var(--color-danger);
+    }
+  }
+}

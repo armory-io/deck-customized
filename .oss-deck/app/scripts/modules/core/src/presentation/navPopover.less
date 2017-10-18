@@ -1,0 +1,45 @@
+@import (reference) "~core/presentation/less/imports/commonImports.less";
+
+.nav-popover {
+  font-weight: 600;
+  color: var(--color-mineshaft);
+  .small {
+    color: var(--color-mineshaft);
+  }
+  &:hover, &:active, &:focus {
+    color: var(--color-mineshaft);
+    text-decoration: none;
+  }
+}
+.nav-popover-menu {
+  top: 45px;
+  font-size: 60%;
+  position: absolute;
+  min-width: 200px;
+  z-index: 12;
+  border: 1px solid var(--color-dovegray);
+  background-color: var(--color-white);
+  &::before, &::after {
+    width: 0;
+    height: 0;
+    content: ' ';
+    left: 30%;
+    position: absolute;
+    border: 10px solid transparent;
+    border-top-width: 0;
+    margin-left: -10px;
+  }
+  &::after {
+    margin-left: -10px;
+    border-width: 10px;
+    top: -18px;
+    border-bottom-color: var(--color-white);
+  }
+  &::before {
+    top: -10px;
+    border-bottom-color: var(--color-dovegray);
+  }
+  .list-group-item {
+    border-radius: 0;
+  }
+}

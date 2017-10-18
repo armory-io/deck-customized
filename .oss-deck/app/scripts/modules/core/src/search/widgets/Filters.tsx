@@ -1,0 +1,107 @@
+import * as React from 'react';
+import * as classNames from 'classnames';
+import { BindAll } from 'lodash-decorators';
+
+import { Key } from 'core/widgets/Keys';
+import { Filter } from './Filter';
+import { IFilterType } from './SearchFilterTypeRegistry';
+
+import './filterlist.less';
+
+export interface IFiltersLayout {
+  header: string;
+  filterTypes: IFilterType[];
+}
+
+export interface IFiltersProps {
+  activeFilter: IFilterType;
+  layouts: IFiltersLayout[];
+  isOpen: boolean;
+  filterClicked?: (filter: Filter) => void;
+  onKeyUp?: (key: Key) => void;
+  onMouseDown?: () => void;
+}
+
+@BindAll()
+export class Filters extends React.Component<IFiltersProps> {
+
+  public static defaultProps: Partial<IFiltersProps> = {
+    filterClicked: () => {},
+    onKeyUp: () => {},
+    onMouseDown: () => {}
+  };
+
+  private filters: Filter[] = [];
+
+  private refCallback(filter: Filter): void {
+    this.filters.push(filter);
+  }
+
+  private handleClick(key: string): void {
+    const clickedFilter = this.filters.find((filter: Filter) => {
+      const { text, modifier  } = filter.props.filterType;
+      return key === [text, modifier].join('|');
+    });
+    this.props.filterClicked(clickedFilter);
+  }
+
+  private handleKeyUp(event: React.KeyboardEvent<HTMLElement>): void {
+    switch (event.key) {
+      case Key.UP_ARROW:
+      case Key.DOWN_ARROW:
+        this.props.onKeyUp(event.key);
+        break;
+    }
+  }
+
+  private handleMouseDown(): void {
+    this.props.onMouseDown();
+  }
+
+  private generateFilterElement(filterType: IFilterType): JSX.Element {
+
+    const { text, modifier } = filterType;
+    return (
+      <Filter
+        key={[text, modifier].join('|')}
+        ref={this.refCallback}
+        filterType={filterType}
+        isActive={this.props.activeFilter.modifier === modifier}
+        onClick={this.handleClick}
+        onKeyUp={this.handleKeyUp}
+        onMouseDown={this.handleMouseDown}
+      />
+    );
+  }
+
+  private renderFilterLayout(layout: IFiltersLayout): JSX.Element {
+
+    const { header, filterTypes } = layout;
+    const types = (filterTypes || []).map((type: IFilterType) => this.generateFilterElement(type));
+    return (
+      <div key={[header, filterTypes.length].join('|')}>
+        <div className="filter-list__header">{header}</div>
+        <div role="listbox">
+          {types}
+        </div>
+      </div>
+    );
+  }
+
+  public render(): React.ReactElement<Filters> {
+
+    const { layouts, isOpen } = this.props;
+    const className = classNames({
+      'filter-list': true,
+      'filter-list__open': isOpen,
+      'filter-list__closed': !isOpen
+    });
+
+    const menuLayouts = (layouts || []).map((layout: IFiltersLayout) => this.renderFilterLayout(layout));
+    return (
+      <div className={className}>
+        {menuLayouts}
+      </div>
+    );
+  }
+}
