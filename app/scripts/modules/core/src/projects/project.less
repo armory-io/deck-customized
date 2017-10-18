@@ -1,0 +1,80 @@
+@import (reference) "~core/search/searchResult/baseTable.less";
+
+.spinnaker-container .spinnaker-content {
+  .project-header.page-header {
+    height: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    flex: 0 0 auto;
+
+    h2 {
+      display: inline-block;
+    }
+
+    .nav-popover-menu {
+      z-index: 25;
+    }
+
+    .project-name {
+      font-weight: 300;
+    }
+    .project-view {
+      position: relative;
+      display: inline-block;
+    }
+
+    .configure-project-link {
+      margin: 10px 0 5px;
+      color: var(--color-dovegray);
+      font-size: 120%;
+    }
+  }
+  .project-details {
+    overflow-y: hidden;
+    .application-header {
+      padding-top: 0;
+      h2 {
+        margin-top: 0;
+        min-width: 20px;
+        margin-right: 0;
+        .application-name, .fa {
+          display: none;
+        }
+        a {
+          margin-right: 0;
+        }
+      }
+      a {
+        padding: 5px 15px 10px;
+        &.active, &:focus, &:hover {
+          &:after {
+            bottom: -5px;
+          }
+        }
+      }
+      application-nav-secondary {
+        a {
+          padding: 10px;
+        }
+      }
+      .page-button {
+        margin-top: 0;
+      }
+    }
+    .page-header {
+      height: 40px; //application header override
+    }
+  }
+}
+
+@table-name: project;
+.generate-table(@table-name);
+
+.@{table-name}-table {
+  .table-header, .@{table-name}-row {
+    .@{table-name}-name {
+      width: 250px;
+    }
+  }
+}

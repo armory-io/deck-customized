@@ -1,0 +1,59 @@
+{
+  "buildOnSave": false,
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowJs": false,
+    "baseUrl": "app/scripts/modules",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "lib": [
+      "es2016",
+      "dom"
+    ],
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "noEmitHelpers": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": false, // should really get to a place where we can turn this on
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "transpiled",
+    "paths": {
+      "@spinnaker/core": ["core/src"],
+      "core/*": ["core/src/*"],
+      "core": ["core/src"],
+      "@spinnaker/docker": ["docker/src"],
+      "docker/*": ["docker/src/*"],
+      "docker": ["docker/src"],
+      "@spinnaker/amazon": ["amazon/src"],
+      "amazon/*": ["amazon/src/*"],
+      "amazon": ["amazon/src"],
+      "@spinnaker/google": ["google/src"],
+      "google/*": ["google/src/*"],
+      "google": ["google/src"]
+    },
+    "pretty": true,
+    "removeComments": true,
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strictNullChecks": false, // should really get to a place where we can turn this on
+    "target": "es6",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "exclude": [
+    "build",
+    "node",
+    "node_modules",
+    "transpiled"
+  ],
+  "include": [
+    "test/helpers/custom-matchers.d.ts",
+    "app/scripts/modules/**/*.ts",
+    "app/scripts/modules/**/*.tsx"
+  ]
+}

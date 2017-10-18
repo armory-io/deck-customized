@@ -1,0 +1,33 @@
+# OS Generated Files #
+*.swp
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# IDE Files
+*.ipr
+*.iws
+*.iml
+.idea/
+.vscode/
+
+# Node Files #
+npm-debug.log
+node_modules/
+test/google/node_modules/
+
+# Build Files
+.awcache/
+.gradle/
+.happypack/
+.yalc
+yalc.lock
+build/
+dist/
+lib/
+transpiled/
+app/scripts/modules/core/src/styleguide/src/public/
+
+# Test Results
+test-results.xml

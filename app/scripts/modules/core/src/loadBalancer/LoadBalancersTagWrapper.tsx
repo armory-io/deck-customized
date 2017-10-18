@@ -1,0 +1,26 @@
+import * as React from 'react';
+import { BindAll } from 'lodash-decorators';
+
+import { Application } from 'core/application/application.model';
+import { IServerGroup } from 'core/domain';
+import { ReactInjector } from 'core/reactShims';
+import { LoadBalancersTag } from './LoadBalancersTag';
+
+export interface ILoadBalancersTagProps {
+  application: Application;
+  serverGroup: IServerGroup;
+  // Render popover contents into this container
+  container?: JSX.Element | HTMLElement;
+};
+
+@BindAll()
+export class LoadBalancersTagWrapper extends React.Component<ILoadBalancersTagProps> {
+  public render(): React.ReactElement<LoadBalancersTagWrapper> {
+    const { serverGroup } = this.props;
+    const { cloudProviderRegistry } = ReactInjector;
+    const config = cloudProviderRegistry.getValue(serverGroup.provider || serverGroup.cloudProvider, 'loadBalancer');
+    const Tags = (config && config.LoadBalancersTag) || LoadBalancersTag;
+
+    return <Tags {...this.props} />;
+  }
+}
