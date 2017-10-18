@@ -5,7 +5,7 @@ import { react2angular } from 'react2angular';
 
 const Feedback = () => (
   <a href="https://stackoverflow.com/search?q=spinnaker" target="_blank">
-    <button className="btn btn-info">Help</button>
+    <button className="btn btn-info">Help using stackoverflow</button>
   </a>
 );
 

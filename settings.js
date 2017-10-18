@@ -85,6 +85,6 @@ window.spinnakerSettings = {
     infrastructureStages: process.env.INFRA_STAGES === 'enabled',
     jobs: false,
     snapshots: false,
-    travis: false,
+    travis: false
   },
 };

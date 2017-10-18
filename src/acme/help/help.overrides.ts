@@ -6,6 +6,7 @@ export const ACME_HELP_OVERRIDES = 'spinnaker.acme.help.overrides';
 module(ACME_HELP_OVERRIDES, [HELP_CONTENTS_REGISTRY])
   .run((helpContentsRegistry: HelpContentsRegistry) => {
     const helpContents: { [key: string]: string } = {
+      // on the cluster page, look for the help icon (left of "Edit multiple")
       'cluster.description': `<p>The original cluster was invented by ACME scientists in 1932.</p>`,
     };
     Object.keys(helpContents).forEach(key => helpContentsRegistry.register(key, helpContents[key]));
