@@ -11,7 +11,7 @@ var defaultMetricStore = process.env.METRIC_STORE || 'atlas';
 
 window.spinnakerSettings = {
   checkForUpdates: true,
-  defaultProviders: ['aws', 'gce'],
+  defaultProviders: ['aws', 'gce', 'kubernetes'],
   feedbackUrl: feedbackUrl,
   gateUrl: gateHost,
   bakeryDetailUrl: bakeryDetailUrl,
@@ -42,6 +42,15 @@ window.spinnakerSettings = {
         zone: 'us-central1-f',
       },
       associatePublicIpAddress: true,
+    },
+      kubernetes: {
+      defaults: {
+        account: 'my-kubernetes-account',
+        namespace: 'default',
+        proxy: 'localhost:8001',
+        internalDNSNameTemplate: '{{name}}.{{namespace}}.svc.cluster.local',
+        instanceLinkTemplate: '{{host}}/api/v1/proxy/namespaces/{{namespace}}/pods/{{name}}',
+      },
     },
   },
   whatsNew: {

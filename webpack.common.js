@@ -96,7 +96,7 @@ function configure(IS_TEST) {
         'react2angular', 'react-bootstrap', 'react-dom', 'react-ga', '@uirouter/visualizer', 'ui-select',
         '@uirouter/angularjs'
       ],
-      spinnaker: ['@spinnaker/core', '@spinnaker/google', '@spinnaker/amazon']
+      spinnaker: ['@spinnaker/core', '@spinnaker/google', '@spinnaker/amazon', '@spinnaker/kubernetes']
     };
 
     config.plugins.push(...[
@@ -106,6 +106,7 @@ function configure(IS_TEST) {
           { from: 'node_modules/@spinnaker/core/lib' },
           { from: 'node_modules/@spinnaker/amazon/lib' },
           { from: 'node_modules/@spinnaker/google/lib' },
+          { from: 'node_modules/@spinnaker/kubernetes/lib' },
         ],
         { copyUnmodified: false, ignore: ['*.js', '*.ts', '*.map', 'index.html'] }
       ),
