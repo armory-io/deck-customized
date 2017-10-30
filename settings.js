@@ -11,7 +11,7 @@ var defaultMetricStore = process.env.METRIC_STORE || 'atlas';
 
 window.spinnakerSettings = {
   checkForUpdates: true,
-  defaultProviders: ['aws', 'gce'],
+  defaultProviders: ['aws', 'gce', 'openstack'],
   feedbackUrl: feedbackUrl,
   gateUrl: gateHost,
   bakeryDetailUrl: bakeryDetailUrl,
@@ -42,6 +42,12 @@ window.spinnakerSettings = {
         zone: 'us-central1-f',
       },
       associatePublicIpAddress: true,
+    },
+    openstack: {
+      defaults: {
+        account: 'test',
+        region: 'us-west-1'
+      },
     },
   },
   whatsNew: {
