@@ -52,7 +52,7 @@
     "fork-ts-checker-webpack-plugin": "^0.2.8",
     "formsy-react": "^0.19.2",
     "jasmine": "^2.6.0",
-    "jquery": "2.1.4",
+    "jquery": "3.5.0",
     "jquery-textcomplete": "1.6.1",
     "jquery-ui": "~1.10.5",
     "js-yaml": "^3.8.3",
