@@ -47,7 +47,7 @@
     "d3-scale": "^1.0.4",
     "d3-shape": "^1.0.4",
     "diff-match-patch": "^1.0.0",
-    "dompurify": "^0.8.5",
+    "dompurify": "^2.0.3",
     "font-awesome": "^4.7.0",
     "fork-ts-checker-webpack-plugin": "^0.2.8",
     "formsy-react": "^0.19.2",
